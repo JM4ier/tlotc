@@ -15,4 +15,5 @@ config :nosedrum,
 
 config :tlotc,
     guild: 842112900839112714,
-    selector: 842112900839112717
+    selector: 842112900839112717,
+    owner: 177498563637542921
