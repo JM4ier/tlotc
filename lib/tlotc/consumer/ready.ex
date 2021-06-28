@@ -6,7 +6,8 @@ defmodule TLotC.Consumer.Ready do
   @commands %{
     "help" => Cogs.Help,
     "color" => Cogs.Color,
-    "info" => Cogs.Info
+    "info" => Cogs.Info,
+    "emote" => Cogs.Emote
   }
 
   @spec handle(map()) :: :ok
