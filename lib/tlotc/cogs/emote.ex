@@ -12,7 +12,7 @@ defmodule TLotC.Cogs.Emote do
   @impl true
   def usage,
     do: [
-      "add <:kekw:858260643764109332>",
+      "add <:kekw:858260643764109332>"
     ]
 
   @impl true
