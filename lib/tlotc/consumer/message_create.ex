@@ -1,5 +1,6 @@
 defmodule TLotC.Consumer.MessageCreate do
   alias Nosedrum.Invoker.Split, as: CommandInvoker
+  alias Nostrum.Api
   alias Nostrum.Struct.Message
   alias TLotC.Helpers
 
@@ -12,6 +13,9 @@ defmodule TLotC.Consumer.MessageCreate do
 
         :ignored ->
           :ok
+
+        {:error, :predicate, {:error, error}} ->
+          Api.create_message(msg.channel_id, "An error has occured: `#{error}`")
 
         _ ->
           Nostrum.Api.delete_message!(msg)
