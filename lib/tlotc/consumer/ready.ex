@@ -7,7 +7,8 @@ defmodule TLotC.Consumer.Ready do
     "help" => Cogs.Help,
     "color" => Cogs.Color,
     "info" => Cogs.Info,
-    "emote" => Cogs.Emote
+    "emote" => Cogs.Emote,
+    "escape" => Cogs.Escape
   }
 
   @spec handle(map()) :: :ok

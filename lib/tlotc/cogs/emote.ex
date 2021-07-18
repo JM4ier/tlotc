@@ -23,7 +23,12 @@ defmodule TLotC.Cogs.Emote do
 
   @impl true
   def command(msg, ["add" | rest]) do
-    emotes = Enum.join(rest, "")
+    ref_emotes =
+      if ref = msg.message_reference,
+        do: Api.get_channel_message!(ref.channel_id, ref.message_id).content,
+        else: ""
+
+    emotes = msg.content <> ref_emotes
     Emojis.add_new_emojis(emotes)
   end
 
