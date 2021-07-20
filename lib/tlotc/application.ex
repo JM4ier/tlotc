@@ -5,7 +5,6 @@ defmodule TLotC.Application do
     children = [
       TLotC.Consumer,
       Nosedrum.Storage.ETS
-      # TLotC.Services.RoleManager,
     ]
 
     options = [strategy: :one_for_one, name: TLotC.Supervisor]
