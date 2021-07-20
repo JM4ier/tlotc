@@ -10,10 +10,17 @@ defmodule TLotC.EventManager do
   end
 
   def dispatch(kind, args) do
+    args =
+      if is_tuple(args) do
+        Tuple.to_list(args)
+      else
+        [args]
+      end
+
     Agent.get(__MODULE__, & &1)
     |> Enum.each(fn {typ, callback} ->
       if typ == kind do
-        apply(callback, Tuple.to_list(args))
+        apply(callback, args)
       end
     end)
   end
