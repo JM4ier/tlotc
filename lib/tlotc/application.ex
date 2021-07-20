@@ -4,6 +4,7 @@ defmodule TLotC.Application do
 
     children = [
       TLotC.Consumer,
+      TLotC.EventManager,
       Nosedrum.Storage.ETS
     ]
 
