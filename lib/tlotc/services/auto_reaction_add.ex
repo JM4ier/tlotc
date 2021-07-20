@@ -10,7 +10,7 @@ defmodule TLotC.Services.AutoReactionAdd do
   end
 
   def handle(msg) do
-    if msg.channel_id == 858718354000183316 do
+    if msg.channel_id == 867101188205707274 do
       Api.create_reaction!(msg.channel_id, msg.id, ":this:858260896597803019")
       :timer.sleep(2000)
       Api.create_reaction!(msg.channel_id, msg.id, ":that:858260886799777792")
