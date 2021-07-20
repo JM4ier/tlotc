@@ -1,7 +1,6 @@
 defmodule TLotC.Consumer do
   alias TLotC.Consumer.{
     Ready,
-    MessageReactionAdd,
     MessageCreate
   }
 
@@ -20,10 +19,6 @@ defmodule TLotC.Consumer do
 
   def he_old({:READY, data, _ws_state}) do
     Ready.handle(data)
-  end
-
-  def he_old({:MESSAGE_REACTION_ADD, reaction, _ws_state}) do
-    MessageReactionAdd.handle(reaction)
   end
 
   def he_old({:MESSAGE_CREATE, msg, _ws_state}) do

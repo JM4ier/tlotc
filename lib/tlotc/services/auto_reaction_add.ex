@@ -5,11 +5,15 @@ defmodule TLotC.Services.AutoReactionAdd do
   use Agent
 
   def start_link(_opts) do
-    EventManager.register(:MESSAGE_CREATE, &on_message_create/1)
+    EventManager.register(:MESSAGE_CREATE, __MODULE__, :handle)
     Agent.start_link(fn -> {} end, name: __MODULE__)
   end
 
-  def on_message_create(msg) do
-    IO.puts("#{msg.content}")
+  def handle(msg) do
+    if msg.channel_id == 858718354000183316 do
+      Api.create_reaction!(msg.channel_id, msg.id, ":this:858260896597803019")
+      :timer.sleep(2000)
+      Api.create_reaction!(msg.channel_id, msg.id, ":that:858260886799777792")
+    end
   end
 end
