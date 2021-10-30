@@ -3,7 +3,7 @@ use Mix.Config
 config :nostrum,
   token: File.read("config/token.txt") |> elem(1),
   num_shards: :auto,
-  gateway_intents: [:guild_members]
+  gateway_intents: [:guild_members],
   audio_timeout: 20000,
   audio_running_timeout: 2000
 

@@ -4,10 +4,7 @@ defmodule TLotC.Cogs.Help do
   alias Nosedrum.Storage.ETS, as: Commands
   alias Nostrum.Api
   alias Nostrum.Struct.Embed
-
-  defp prefix() do
-    Application.fetch_env!(:nosedrum, :prefix)
-  end
+  alias TLotC.Helpers
 
   @impl true
   def predicates, do: []
@@ -29,12 +26,12 @@ defmodule TLotC.Cogs.Help do
       description:
         Commands.all_commands()
         |> Map.keys()
-        |> Stream.map(&"`#{prefix()}#{&1}`")
+        |> Stream.map(&"`#{Helpers.prefix()}#{&1}`")
         |> (fn cmds ->
               """
               #{Enum.join(cmds, ", ")}
 
-              Help to specific commands can be obtained with `#{prefix()}help <command>`
+              Help to specific commands can be obtained with `#{Helpers.prefix()}help <command>`
               """
             end).()
     }
@@ -43,14 +40,14 @@ defmodule TLotC.Cogs.Help do
   end
 
   def command(msg, [cmd]) do
-    cmd = String.replace(cmd, prefix(), "")
+    cmd = String.replace(cmd, Helpers.prefix(), "")
 
     msg =
       case Commands.lookup_command(cmd) do
         nil ->
           Api.create_message(
             msg.channel_id,
-            "I don't know this command. Get a list of commands with `#{prefix()}help`"
+            "I don't know this command. Get a list of commands with `#{Helpers.prefix()}help`"
           )
 
         command when not is_map(command) ->
@@ -58,7 +55,7 @@ defmodule TLotC.Cogs.Help do
             title: "Help to #{cmd}",
             description: """
             ```
-            #{command.usage() |> Stream.map(&"#{prefix() <> cmd} #{&1}") |> Enum.join("\n")}
+            #{command.usage() |> Stream.map(&"#{Helpers.prefix() <> cmd} #{&1}") |> Enum.join("\n")}
             ```
             #{command.description()}
             """
