@@ -4,6 +4,7 @@ defmodule TLotC.Helpers do
   def guild(), do: Application.fetch_env!(:tlotc, :guild)
   def owner(), do: Application.fetch_env!(:tlotc, :owner)
   def prefix(), do: Application.fetch_env!(:nosedrum, :prefix)
+  def blind_role(), do: Application.fetch_env!(:tlotc, :blind)
 
   def create_room(name) do
     channel = Api.create_guild_channel!(guild(), name: name, topic: "")
