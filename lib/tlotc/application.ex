@@ -6,7 +6,8 @@ defmodule TLotC.Application do
       TLotC.Consumer,
       TLotC.EventManager,
       Nosedrum.Storage.ETS,
-      TLotC.Services.AutoReactionAdd
+      TLotC.Services.AutoReactionAdd,
+      TLotC.Services.Cryo
     ]
 
     options = [strategy: :one_for_one, name: TLotC.Supervisor]
