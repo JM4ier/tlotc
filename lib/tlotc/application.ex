@@ -7,6 +7,7 @@ defmodule TLotC.Application do
       TLotC.EventManager,
       Nosedrum.Storage.ETS,
       TLotC.Services.AutoReactionAdd,
+      TLotC.Services.Tracker,
       TLotC.Services.Cryo
     ]
 
